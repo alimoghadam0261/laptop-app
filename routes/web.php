@@ -22,6 +22,13 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/laptop/show/{id}',App\Livewire\Admin\Electronic\Laptop\Show::class)->name('admin.laptop.show');
     Route::get('/laptop/transfer',App\Livewire\Admin\Electronic\Laptop\Transfer::class)->name('admin.laptop.transfer');
 
+    Route::get('/tools/create',App\Livewire\Admin\Tools\Create::class)->name('admin.tools.create');
+    Route::get('/tools/index',App\Livewire\Admin\Tools\Index::class)->name('admin.tools.index');
+    Route::get('/tools/edit/{id}',App\Livewire\Admin\Tools\Edit::class)->name('admin.tools.edit');
+    Route::get('/tools/show/{id}',App\Livewire\Admin\Tools\Show::class)->name('admin.tools.show');
+    Route::get('/tools/transfer',App\Livewire\Admin\Tools\Transfer::class)->name('admin.tools.transfer');
+    Route::get('/tools/category',App\Livewire\Admin\Tools\Category::class)->name('admin.tools.category');
+
 
 
 });

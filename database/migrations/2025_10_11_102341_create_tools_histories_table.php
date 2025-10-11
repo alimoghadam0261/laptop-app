@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('digital_histories', function (Blueprint $table) {
+        Schema::create('tools_histories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('digitaltool_id')->constrained('digitaltools')->onDelete('cascade');
+            $table->foreignId('tools_id')->constrained('tools')->onDelete('cascade');
+
+
             $table->string('card_number');
             $table->string('status');
             $table->string('name_receiver');
@@ -22,8 +24,7 @@ return new class extends Migration
             $table->date('from_date');
             $table->date('to_date')->nullable();
             $table->longText('content');
-            $table->json('accessories')->nullable();
-                     $table->timestamps();
+            $table->timestamps();
         });
     }
 
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('digital_histories');
+        Schema::dropIfExists('tools_histories');
     }
 };

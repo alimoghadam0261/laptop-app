@@ -43,19 +43,14 @@
 
                             <label>تاریخ برگشت (اختیاری):</label>
                             <input class="form-control" type="date" wire:model="to_date">
-                            <label for="">وضعیت</label>
+                            <label>وضعیت</label>
                             <select class="form-control" name="status" wire:model="status" id="">
                                 <option value="" selected>انتخاب کتید</option>
                                 <option value="ارسال" selected>ارسال</option>
                                 <option value="در حال ارسال" selected>در حال ارسال</option>
                                 <option value="بازگشت" selected> بازگشت</option>
                             </select>
-                            <div class="col-md-12 mt-3">
-                                <label>موقعیت مکانی:</label>
-                                <div id="map" style="height: 300px;"></div>
-                                <input type="hidden" wire:model="latitude">
-                                <input type="hidden" wire:model="longitude">
-                            </div>
+
                             <label>توضیحات :</label>
                             <textarea class="form-control" wire:model="content" name="" id="" cols="30" rows="10"></textarea>
                         </div>
@@ -80,29 +75,6 @@
     </div>
 </div>
 
-<script>
-    document.addEventListener("livewire:initialized", () => {
-        setTimeout(() => {
-            var map = L.map('map').setView([35.6892, 51.3890], 12);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; OpenStreetMap'
-            }).addTo(map);
-
-            let marker;
-            map.on('click', function(e) {
-                if (marker) {
-                    map.removeLayer(marker);
-                }
-                marker = L.marker(e.latlng).addTo(map);
-
-                // ارسال مختصات به Livewire
-            @this.set('latitude', e.latlng.lat);
-            @this.set('longitude', e.latlng.lng);
-            });
-        }, 300);
-    });
-</script>
 
 
 

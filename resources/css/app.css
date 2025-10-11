@@ -9,108 +9,152 @@
 
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    'Segoe UI Symbol', 'Noto Color Emoji';
 }
-a{
+a {
     text-decoration: none;
 }
-label{
-    font-size:.8em;
+
+label {
+    font-size: .8em;
     font-weight: bold;
 }
-body{
+
+body {
     background-color: #eae6e6;
 }
 
 
-.row{
-    padding:0;
-    margin:0;
+.row {
+    padding: 0;
+    margin: 0;
 }
-.wigedits{
-    display:flex;
+
+.wigedits {
+    display: flex;
     justify-content: space-evenly;
 }
 
-.wigedit-dashboard{
-    width:12em;
-    height:12em;
+.wigedit-dashboard {
+    width: 12em;
+    height: 12em;
     border-radius: 6px;
     background: #e0e0e0;
-    box-shadow:  21px 21px 43px #c3c3c3,
+    box-shadow: 21px 21px 43px #c3c3c3,
     -21px 21px 43px #fdfdfd;
     transition: .5s ease;
     text-align: center;
-   padding-top:2em;
+    padding-top: 2em;
 
 }
 
-.wigedit-dashboard h5{
+.wigedit-dashboard h5 {
     font-weight: bold;
 }
-.wigedit-dashboard:hover{
-    box-shadow:  21px 21px 43px #c3c3c3;
+
+.wigedit-dashboard:hover {
+    box-shadow: 21px 21px 43px #c3c3c3;
 }
 
 
-
-.wiget-error{
-    width:17em;
-    height:8em;
+.wiget-error {
+    width: 17em;
+    height: 8em;
     border-radius: 6px;
     background: #e0e0e0;
-    box-shadow:  21px 21px 43px #c3c3c3,
+    box-shadow: 21px 21px 43px #c3c3c3,
     -21px 21px 43px #fdfdfd;
     transition: .5s ease;
     text-align: center;
-    padding-top:2em;
+    padding-top: 2em;
 
 }
 
 
 /*===================================laptop===============================*/
 
-.create-laptop{
-    width:25em;
-    height:5em;
+.create-laptop {
+    width: 25em;
+    height: 5em;
     border-radius: 5px;
     background: #000000;
     color: #fff;
-    box-shadow:  21px 21px 43px #c3c3c3;
+    box-shadow: 21px 21px 43px #c3c3c3;
     text-align: center;
-    padding-top:20px;
+    padding-top: 20px;
     transition: .9s ease;
 }
-.create-laptop:hover{
-    box-shadow:  21px 11px 13px #c3c3c3;
-    background:#e0e0e0 ;
+
+.create-laptop:hover {
+    box-shadow: 21px 11px 13px #c3c3c3;
+    background: #e0e0e0;
     color: #1a202c;
 }
 
-.input-search{
-    width:70em;
+.input-search {
+    width: 70em;
     height: 2.5em;
     transform: translateX(-4em);
 }
 
 
-
-
 /*==========================create digital tools==============*/
 
-.form-create{
+.form-create {
     background: #f3eeee;
     border-radius: 15px;
     border: 1px #ddd solid;
-    padding:10px;
-    box-shadow:  20px 20px 60px #beb3b3,
+    padding: 10px;
+    box-shadow: 20px 20px 60px #beb3b3,
     -20px -20px 60px #fff3f3;
 }
+
 /*====================================show digital tools================*/
-.transfer{
+.transfer {
 
     background: #f3eeee;
     height: 70vh;
     overflow-y: scroll;
     font-size: .8em;
+}
+
+/*==========================================tools=====================*/
+
+.btntools {
+    font-size: 1em;
+    font-weight: bold;
+    color: #181820;
+    width: 12em;
+    height: 5em;
+    text-align: center;
+    padding-top:1.5em;
+    border-radius: 10px;
+    text-decoration: none;
+    background: linear-gradient(#dcdfe4, #51567a) repeat-x #fff;
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-size: auto;
+    background-size: 200% 100%;
+    background-position-x: 0;
+    background-position-y: 0em;
+    transition: background-position-y 0.5s ease;
+    animation: waveAnimation 4s infinite linear;
+    animation-play-state: running;
+    animation-play-state: paused;
+}
+
+.btntools:hover {
+    background-position-x: 0;
+    background-position-y: 10em;
+    animation-play-state: running;
+
+}
+
+@keyframes waveAnimation {
+    from {
+        background-position-x: 0%;
+    }
+    to {
+        background-position-x: 200%;
+    }
 }

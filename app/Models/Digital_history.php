@@ -24,8 +24,7 @@ class Digital_history extends Model
         'content',
         'status',
         'accessories',
-        'latitude',
-        'longitude'
+
     ];
     protected $casts = [
         'accessories' => 'array',

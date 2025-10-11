@@ -2,11 +2,12 @@ a{text-decoration:none;color:#000;}
 
 .topmenu {
     width: 100%;
+
     height: 50px;
     background: #dfd3d3;
     box-shadow: 25px 25px 50px #938b8b,
     -25px -25px 50px #ffffff;
-    /*transform: translateX(1em);*/
+    transform: translateX(1em);
 }
 
 hr{

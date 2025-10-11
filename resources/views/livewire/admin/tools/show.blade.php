@@ -16,32 +16,11 @@
                             <p>{{ $tools->name }}</p>
                         </div>
                         <div class="wigedit-dashboard">
-                            <h5>برند:</h5>
-                            <p>{{ $tools->brand }}</p>
+                            <h5>مدل:</h5>
+                            <p>{{ $tools->model }}</p>
                         </div>
-                        <div class="wigedit-dashboard">
-                            <h5>Cpu:</h5>
-                            <p>{{ $tools->cpu }}</p>
-                        </div>
-                        <div class="wigedit-dashboard">
-                            <h5>Ram:</h5>
-                            <p>{{ $tools->ram }}</p>
-                        </div>
-                    </div>
 
-                    <br>
 
-                    <div style="display: flex;justify-content: space-evenly">
-                        <div class="wigedit-dashboard">
-                            <h5>اقلام همراه:</h5>
-                            @foreach(json_decode($tools->accessories ?? '[]', true) as $accessory)
-                                <p>{{ $accessory }}</p>
-                            @endforeach
-                        </div>
-                        <div class="wigedit-dashboard">
-                            <h5>شماره سریال:</h5>
-                            <p>{{ $tools->serial_it }}</p>
-                        </div>
                         <div class="wigedit-dashboard">
                             <h5>شماره جم داری:</h5>
                             <p>{{ $tools->serial_jam }}</p>
@@ -52,8 +31,8 @@
                         </div>
                     </div>
                 </div>
-
-                <hr><br>
+                <hr>
+                <br>
 
                 {{-- جدول تاریخچه --}}
                 <div class="container">
@@ -129,9 +108,9 @@
                 color: {
                     background: color,
                     border: '#333',
-                    highlight: { background: color, border: '#000' }
+                    highlight: {background: color, border: '#000'}
                 },
-                font: { color: '#000', size: 14 }
+                font: {color: '#000', size: 14}
             };
         });
 
@@ -139,7 +118,7 @@
         const edges = new vis.DataSet(edgesData);
 
         const container = document.getElementById('mynetwork');
-        const data = { nodes, edges };
+        const data = {nodes, edges};
         const options = {
             layout: {
                 hierarchical: {
@@ -150,7 +129,7 @@
             edges: {
                 arrows: 'to',
                 color: 'gray',
-                font: { align: 'middle', size: 12 }
+                font: {align: 'middle', size: 12}
             },
             nodes: {
                 shape: 'circle',
