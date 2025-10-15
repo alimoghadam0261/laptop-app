@@ -36,8 +36,8 @@ body {
 }
 
 .wigedit-dashboard {
-    width: 12em;
-    height: 12em;
+    width: 13em;
+    height: 10em;
     border-radius: 6px;
     background: #e0e0e0;
     box-shadow: 21px 21px 43px #c3c3c3,
@@ -157,4 +157,8 @@ body {
     to {
         background-position-x: 200%;
     }
+}
+
+.inverted-form{
+    width: 97%;
 }

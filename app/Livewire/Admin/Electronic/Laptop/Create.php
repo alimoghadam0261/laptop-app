@@ -33,16 +33,13 @@ class Create extends Component
             'name'       => 'required|string|max:255',
             'serial_it'  => 'required|unique:digitaltools,serial_it',
             'serial_jam' => 'required|unique:digitaltools,serial_jam',
-            'brand'      => 'required|min:2',
-            'cpu'        => 'required|min:2',
-            'ram'        => 'required|min:2',
-            'content'    => 'required|min:3',
+
             // تحویل
             'card_number'  => 'required|string',
             'name_receiver' => 'required|string|min:3',
             'phone'        => 'required|min:11|max:11',
             'name_project' => 'required|string|min:3',
-            'from_date'    => 'required|date',
+
         ]);
 
         // ذخیره لپتاپ

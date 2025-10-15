@@ -21,17 +21,18 @@
                         @if(session('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 {{ session('success') }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="بستن"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="بستن"></button>
                             </div>
                         @endif
                     </div>
                     <div class="col-md-4">
 
-                            <a href="{{ route('admin.laptop.transfer') }}">
-                                <div class="create-laptop">
-                                  ارسال تجهیزات الکترونیکی
-                                </div>
-                            </a>
+                        <a href="{{ route('admin.laptop.transfer') }}">
+                            <div class="create-laptop">
+                                ارسال تجهیزات الکترونیکی
+                            </div>
+                        </a>
                     </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -47,6 +48,39 @@
                                placeholder="جستجو بر اساس نام یا شماره سریال">
                     </div>
                 </div>
+                <br>
+                {{-- فیلتر و خروجی اکسل --}}
+                <div class="container mt-4">
+                    <div class="row align-items-end">
+                        <div class="col-md-3">
+                            <label for="from_date">از تاریخ:</label>
+                            <input type="date" id="from_date" wire:model="from_date" class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="to_date">تا تاریخ:</label>
+                            <input type="date" id="to_date" wire:model="to_date" class="form-control">
+                        </div>
+                        <div class="col-md-3 mt-2 mt-md-0">
+                            <button style="transform: translateY(1.2em)" wire:click="exportExcel" class="btn btn-outline-dark w-100">
+                                <i class="fa fa-file-excel"></i> خروجی اکسل
+                            </button>
+                        </div>
+                    </div>
+
+                    {{-- وضعیت لود --}}
+                    <div wire:loading wire:target="exportExcel" class="mt-2 text-secondary">
+                        در حال آماده‌سازی فایل...
+                    </div>
+                    <br>
+                    <label>مرتب‌سازی بر اساس:</label>
+                    <select wire:model.live="sortBy" class="form-select" style="width:auto;display:inline-block;">
+                        <option value="name">نام</option>
+                        <option value="serial_jam">شماره جم</option>
+                        <option value="model">مدل</option>
+                        <option value="category">دسته بندی</option>
+                    </select>
+                </div>
+
 
                 <br>
 
@@ -75,10 +109,12 @@
                                         <td>{{ $item->serial_jam }}</td>
                                         <td>{{ $item->brand }}</td>
                                         <td>{{ optional($item->latestHistory)->name_receiver ?? '—' }}</td>
-                                        <td><a href="{{route('admin.laptop.edit',$item->id)}}"><i class="fa fa-edit"></i></a></td>
+                                        <td><a href="{{route('admin.laptop.edit',$item->id)}}"><i
+                                                    class="fa fa-edit"></i></a></td>
                                         <td><i
                                                 onclick="event.stopPropagation(); return confirm('آیا مطمئن هستید؟')"
-                                                class="fa fa-trash" style="cursor:pointer;color:red;" wire:click="delete({{ $item->id }})"></i></td>
+                                                class="fa fa-trash" style="cursor:pointer;color:red;"
+                                                wire:click="delete({{ $item->id }})"></i></td>
                                     </tr>
                                 @empty
                                     <tr>
@@ -89,7 +125,8 @@
                             </table>
                             <div class="mb-3">
                                 <label for="perPage">تعداد نمایش در هر صفحه:</label>
-                                <select id="perPage" wire:model.live="perPage" class="form-select" style="width:auto;display:inline-block;">
+                                <select id="perPage" wire:model.live="perPage" class="form-select"
+                                        style="width:auto;display:inline-block;">
                                     <option value="10">10</option>
                                     <option value="25">25</option>
                                     <option value="50">50</option>

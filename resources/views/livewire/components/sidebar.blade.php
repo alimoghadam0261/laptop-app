@@ -5,9 +5,10 @@
         <hr>
         <ul>
             <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard"></i> داشبورد</a></li>
+            <li><a href="{{route('admin.profile.index')}}"><i class="fa fa-users"></i> پروفایل</a></li>
             <li><a href="{{route('admin.laptop.index')}}"><i class="fa fa-computer"></i> تجهیزات الکترونیکی</a></li>
-            <li><a href="{{route('admin.tools.index')}}"><i class="fa fa-deskpro"></i>ابزارهای جم داری</a></li>
-            <li><a href=""><i class="fa fa-users"></i> پرسنل</a></li>
+            <li><a href="{{route('admin.tools.index')}}"><i class="fa fa-deskpro"></i>ابزارهای جمع داری</a></li>
+            <li><a href="{{route('admin.profile.personal')}}"><i class="fa fa-users"></i> پرسنل</a></li>
 {{--            <li><a href=""><i class="fa fa-info"></i> test</a></li>--}}
         </ul>
             <br><br>

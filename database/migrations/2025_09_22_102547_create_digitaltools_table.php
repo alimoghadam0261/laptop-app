@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name')->index();
             $table->string('brand');
-            $table->string('serial_it')->unique();
-            $table->string('serial_jam')->unique();
+            $table->string('serial_it')->unique()->index();
+            $table->string('serial_jam')->unique()->index();
             $table->string('cpu');
             $table->string('ram');
             $table->longText('content');

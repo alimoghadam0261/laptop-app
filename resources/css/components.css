@@ -13,6 +13,7 @@ a{text-decoration:none;color:#000;}
 hr{
     width: 97%;
 }
+
 /*============================sidebar=======================*/
 .sidebar {
     padding: 20px;
@@ -26,7 +27,7 @@ hr{
 
 .sidebar ul li {
     list-style: none;
-    line-height: 50px;
+    line-height: 70px;
     position: relative;
     overflow: hidden;
     text-align: right;

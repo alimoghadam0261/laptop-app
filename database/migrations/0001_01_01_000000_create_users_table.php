@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('department');
             $table->string('cardNumber')->unique();
             $table->string('phone');
+            $table->string('rules');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

@@ -10,7 +10,7 @@ class Tools extends Model
     use HasFactory;
     protected $fillable = [
         'content','name','category_id','serial_jam','size'
-        ,'model','color','user_id'
+        ,'model','color','user_id','year','status','price'
     ];
 
 

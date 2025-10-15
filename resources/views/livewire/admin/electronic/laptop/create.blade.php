@@ -35,7 +35,7 @@
                                         @error('brand') <span class="text-danger">{{ $message }}</span> @enderror
                                         <br>
 
-                                        <label>شماره جم داری :</label><br>
+                                        <label>شماره جمع داری :</label><br>
                                         <input type="text" class="form-input-create" wire:model="serial_jam">
                                         @error('serial_jam') <span class="text-danger">{{ $message }}</span> @enderror
                                         <br>

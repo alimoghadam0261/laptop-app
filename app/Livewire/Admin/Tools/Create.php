@@ -17,6 +17,9 @@
         public $category_id;
         public $user_id;
         public $color;
+        public $price;
+        public $year;
+        public $status;
         public $categories = [];
 
         public function mount()
@@ -25,13 +28,24 @@
 
         }
 
+
         public function save()
         {
+
+            $this->validate([
+                'name' => 'required',
+                'status' => 'required',
+                'serial_jam' => 'required|unique:tools,serial_jam',
+                'category_id' => 'required',
+            ]);
 
             $tool =Tools::create([
                 'name' => $this->name,
                 'model' => $this->model,
                 'size' => $this->size,
+                'price' => $this->price,
+                'year' => $this->year,
+                'status' => $this->status,
                 'serial_jam' => $this->serial_jam,
                 'content' => $this->content,
                 'category_id' => $this->category_id,

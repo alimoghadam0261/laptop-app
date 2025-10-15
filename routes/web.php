@@ -29,6 +29,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/tools/transfer',App\Livewire\Admin\Tools\Transfer::class)->name('admin.tools.transfer');
     Route::get('/tools/category',App\Livewire\Admin\Tools\Category::class)->name('admin.tools.category');
 
+    Route::get('/profile/create',App\Livewire\Admin\Profile\Create::class)->name('admin.profile.create');
+    Route::get('/profile/index',App\Livewire\Admin\Profile\Index::class)->name('admin.profile.index');
+    Route::get('/profile/personal',App\Livewire\Admin\Profile\Personal::class)->name('admin.profile.personal');
+
 
 
 });

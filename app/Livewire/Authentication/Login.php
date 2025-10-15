@@ -14,6 +14,8 @@ class Login extends Component
     public $cardNumber;
     public $phone;
     public $department;
+    public $rules;
+
 
     /**
      * ثبت‌نام کاربر جدید
@@ -24,19 +26,21 @@ class Login extends Component
             'name' => 'required|string|max:255',
             'cardNumber' => 'required|unique:users,cardNumber',
             'department' => 'required',
+            'rules' => 'required',
             'phone' => 'required|min:11|max:11|unique:users,phone',
         ]);
 
         User::create([
             'name' => $this->name,
             'phone' => $this->phone,
+            'rules' => $this->rules,
             'department' => $this->department,
             'cardNumber' => $this->cardNumber,
             'password' => Hash::make($this->phone), // 👈 شماره موبایل پسورد میشه
         ]);
 
         session()->flash('success', 'اطلاعات کاربر با موفقیت ثبت شد.');
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admin.profile.personal');
     }
 
     /**
@@ -44,10 +48,6 @@ class Login extends Component
      */
     public function login()
     {
-        $this->validate([
-            'cardNumber' => 'required',
-            'phone' => 'required|min:11|max:11',
-        ]);
 
         if (Auth::attempt([
             'cardNumber' => $this->cardNumber,

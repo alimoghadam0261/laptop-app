@@ -10,47 +10,32 @@
 
                 {{-- مشخصات لپ‌تاپ --}}
                 <div class="container">
-                    <div style="display: flex;justify-content: space-evenly">
-                        <div class="wigedit-dashboard">
-                            <h5>نام:</h5>
-                            <p>{{ $tools->name }}</p>
-                        </div>
-                        <div class="wigedit-dashboard">
-                            <h5>برند:</h5>
-                            <p>{{ $tools->brand }}</p>
-                        </div>
-                        <div class="wigedit-dashboard">
-                            <h5>Cpu:</h5>
-                            <p>{{ $tools->cpu }}</p>
-                        </div>
-                        <div class="wigedit-dashboard">
-                            <h5>Ram:</h5>
-                            <p>{{ $tools->ram }}</p>
-                        </div>
-                    </div>
-
                     <br>
+               <div class="row">
+                   <div class="col-md-4" style="background:rgba(255,255,255,.4);margin:.3em;width: 30%;padding:10px;text-align: center">
+                       <h5>نام:</h5>
+                       <p>{{ $tools->name }}</p>
+                       <h5>برند:</h5>
+                       <p>{{ $tools->brand }}</p>
+                       <h5>Cpu:</h5>
+                       <p>{{ $tools->cpu }}</p>
+                   </div>
+                   <div class="col-md-4" style="background:rgba(255,255,255,.4);margin:.3em;width: 30%;padding:10px;text-align: center">
+                       <h5>Ram:</h5>
+                       <p>{{ $tools->ram }}</p>
+                       <h5>سریال جمع داری:</h5>
+                       <p>{{ $tools->serial_jam }}</p>
+                       <h5> سریال فناوری اطلاعات:</h5>
+                       <p>{{ $tools->serial_it }}</p>
+                   </div>
+                   <div class="col-md-4" style="background:rgba(255,255,255,.4);margin:.3em;width: 30%;padding:10px;text-align: center">
+                       <h5> اقلام همراه:</h5>
+                       <p>{{ is_array($tools->accessories) ? implode(', ', $tools->accessories) : $tools->accessories }}</p>
 
-                    <div style="display: flex;justify-content: space-evenly">
-                        <div class="wigedit-dashboard">
-                            <h5>اقلام همراه:</h5>
-                            @foreach(json_decode($tools->accessories ?? '[]', true) as $accessory)
-                                <p>{{ $accessory }}</p>
-                            @endforeach
-                        </div>
-                        <div class="wigedit-dashboard">
-                            <h5>شماره سریال:</h5>
-                            <p>{{ $tools->serial_it }}</p>
-                        </div>
-                        <div class="wigedit-dashboard">
-                            <h5>شماره جم داری:</h5>
-                            <p>{{ $tools->serial_jam }}</p>
-                        </div>
-                        <div class="wigedit-dashboard">
-                            <h6>توضیحات:</h6>
-                            <p>{{ $tools->content }}</p>
-                        </div>
-                    </div>
+                       <h5> توضیحات:</h5>
+                       <p>{{ $tools->content }}</p>
+                   </div>
+               </div>
                 </div>
 
                 <hr><br>

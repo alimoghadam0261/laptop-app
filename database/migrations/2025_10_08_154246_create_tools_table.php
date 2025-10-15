@@ -15,12 +15,15 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
 
 
-            $table->string('name');
+            $table->string('name')->index();
             $table->string('size')->nullable();
             $table->string('color')->nullable();
-            $table->string('serial_jam');
-            $table->string('content')->nullable();
+            $table->string('price')->nullable();
+            $table->string('status')->default('سالم');
+            $table->string('year')->nullable();
+            $table->string('serial_jam')->unique()->index();
             $table->string('model')->nullable();
+            $table->string('content')->nullable();
             $table->timestamps();
         });
     }

@@ -17,7 +17,9 @@ class User extends Authenticatable
         'name',
         'department',
         'phone',
-        'cardNumber','password'
+        'rules',
+        'cardNumber',
+        'password'
     ];
 
 

@@ -52,7 +52,6 @@ class Edit extends Component
             'cpu' => 'required|min:2',
             'ram' => 'required|min:2',
             'content' => 'required|min:3',
-            'accessories' => 'required|array|min:1',
         ];
     }
 

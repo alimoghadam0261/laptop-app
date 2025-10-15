@@ -29,6 +29,12 @@
         <input type="number" wire:model="phone" placeholder="phone"><br>
         <input type="number" wire:model="cardNumber" placeholder="cardNumber"><br>
         <input type="text" wire:model="department" placeholder="department"><br>
+        <select class="form form-control" wire:model="rules">
+            <option value="admin">مدیریت</option>
+            <option value="it">فناوری اطلاعات (IT)</option>
+            <option value="jam">جم داری</option>
+
+        </select>
         <button type="submit">اضافه کردن</button>
     </form>
     </div>
