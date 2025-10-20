@@ -41,7 +41,7 @@
                     {{-- جدول تاریخچه --}}
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-7">
+                            <div class="col-md-8">
                                 <div class="transfer">
                                     <table class="table table-striped text-center">
                                         <thead class="table-dark">
@@ -52,6 +52,7 @@
                                             <th>نام پروژه</th>
                                             <th>وضعیت</th>
                                             <th>تاریخ تحویل</th>
+
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -71,6 +72,7 @@
                                                     {{ $toolsLoc->status }}
                                                 </td>
                                                 <td>{{ jdate($toolsLoc->from_date)->format('Y-m-d') }}</td>
+
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -79,7 +81,7 @@
                             </div>
 
                             {{-- گراف شبکه --}}
-                            <div class="col-md-5">
+                            <div class="col-md-4">
                                 <div id="mynetwork"
                                      style="width: 100%; height: 600px; border: 1px solid lightgray;"></div>
                             </div>

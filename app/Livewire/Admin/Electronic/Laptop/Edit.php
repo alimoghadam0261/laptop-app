@@ -25,14 +25,11 @@ class Edit extends Component
         $this->cpu = $this->edit->cpu;
         $this->ram = $this->edit->ram;
         $this->content = $this->edit->content;
-        if (is_array($this->edit->accessories)) {
-            $this->accessories = $this->edit->accessories;
-        } elseif (is_string($this->edit->accessories) && !empty($this->edit->accessories)) {
-            $decoded = json_decode($this->edit->accessories, true);
-            $this->accessories = is_array($decoded) ? $decoded : [];
-        } else {
-            $this->accessories = [];
-        }
+
+        // همیشه accessories را آرایه نگه دارید
+        $this->accessories = is_array($this->edit->accessories)
+            ? $this->edit->accessories
+            : json_decode($this->edit->accessories ?? '[]', true);
     }
 
 

@@ -39,5 +39,12 @@ class Digitaltool extends Model
     {
         return $this->hasOne(Digital_history::class, 'digitaltool_id')->whereNull('to_date');
     }
+    public function hasActiveSend(): bool
+    {
+        return $this->histories()
+            ->where('status', \App\Models\Digital_history::STATUS_SEND)
+            ->whereNull('to_date')
+            ->exists();
+    }
 
 }

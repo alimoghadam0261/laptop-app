@@ -16,12 +16,12 @@ return new class extends Migration
             $table->foreignId('tools_id')->constrained('tools')->onDelete('cascade');
 
 
-            $table->string('card_number');
+            $table->string('card_number')->index();
             $table->string('status');
-            $table->string('name_receiver');
+            $table->string('name_receiver')->index();
             $table->string('phone');
             $table->string('name_project');
-            $table->date('from_date');
+            $table->date('from_date')->nullable();;
             $table->date('to_date')->nullable();
             $table->longText('content');
             $table->timestamps();

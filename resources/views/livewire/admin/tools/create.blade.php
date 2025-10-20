@@ -18,7 +18,7 @@
                     </div>
                 @endif
 
-                <form wire:submit.prevent="save" class="form form-control  inverted-form ">
+                <form wire:submit.prevent="save" class="form form-control " style="width:95%">
                     <div class="row">
                         {{-- ستون سمت چپ --}}
                         <div class="col-md-6">
@@ -104,7 +104,7 @@
 
 
 
-                    <button type="submit" class="btn btn-dark px-4 tag">
+                    <button type="submit" class="btn btn-dark px-4" style="width: 30%">
                         ثبت ابزار جدید
                     </button>
                 </form>

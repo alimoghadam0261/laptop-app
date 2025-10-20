@@ -15,7 +15,7 @@ class Transfer extends Component
     public $name_project;
     public $from_date;
     public $to_date;
-    public $status = 'تحویل';
+    public $status = 'return';
 
     public function mount()
     {

@@ -9,51 +9,72 @@ use Livewire\Component;
 class Show extends Component
 {
     public $tools;
-    public $toolsID;
-    public $toolsLoc;
     public $histories;
 
     public function mount($id)
     {
-        // یک ابزار مشخص
+        // ابزار اصلی
         $this->tools = Digitaltool::findOrFail($id);
 
+        // جدول: نزولی (جدیدترین بالا)
         $this->histories = Digital_history::where('digitaltool_id', $id)
+            ->orderByDesc('from_date')
+            ->get();
+    }
+
+    public function deleteHistory($id)
+    {
+        $history = Digital_history::find($id);
+
+        if ($history) {
+            $history->delete();
+            session()->flash('message', 'رکورد با موفقیت حذف شد.');
+        } else {
+            session()->flash('error', 'رکورد مورد نظر یافت نشد.');
+        }
+
+        // جدول را مجدداً بارگذاری کن
+        $this->histories = Digital_history::where('digitaltool_id', $this->tools->id)
             ->orderByDesc('from_date')
             ->get();
     }
 
     public function render()
     {
-        // نود اصلی لپتاپ
+        // گراف از قدیمی‌ترین به جدیدترین (صعودی)
+        $graphHistories = Digital_history::where('digitaltool_id', $this->tools->id)
+            ->orderBy('from_date', 'asc')
+            ->get();
+
+        // نود اصلی ابزار
         $nodes = [
-            ['id' => 'tool_'.$this->tools->id, 'label' => $this->tools->name, 'color' => 'skyblue']
+            ['id' => 'tool_' . $this->tools->id, 'label' => $this->tools->name, 'status' => 'اصلی']
         ];
 
         $edges = [];
 
-        // تاریخچه‌ها → نودها و یال‌ها
-        foreach ($this->histories as $index => $history) {
-            $nodeId = 'history_'.$history->id;
+        // ساخت گراف از تاریخچه‌ها
+        foreach ($graphHistories as $index => $history) {
+            $nodeId = 'history_' . $history->id;
             $nodes[] = [
                 'id' => $nodeId,
-                'label' => $history->name_receiver."\n".$history->status."\n".$history->from_date,
-                'color' => $history->status === 'ارسال' ? 'red' : ($history->status === 'در حال ارسال' ? 'yellow' : 'green'),
+                'label' => $history->name_receiver . "\n" . $history->status . "\n" . jdate($history->from_date)->format('Y-m-d'),
+                'status' => $history->status,
                 'shape' => 'box'
             ];
 
-            // یال: لپتاپ → اولین تاریخچه
-            if ($index === count($this->histories) - 1) {
+            if ($index === 0) {
+                // اولین تحویل از ابزار
                 $edges[] = [
-                    'from' => 'tool_'.$this->tools->id,
+                    'from' => 'tool_' . $this->tools->id,
                     'to' => $nodeId,
                     'label' => 'اولین تحویل'
                 ];
             } else {
-                // بین تاریخچه‌های متوالی
-                $nextHistory = $this->histories[$index + 1];
+                // اتصال تاریخچه‌های متوالی
+                $prevHistory = $graphHistories[$index - 1];
                 $edges[] = [
-                    'from' => 'history_'.$nextHistory->id,
+                    'from' => 'history_' . $prevHistory->id,
                     'to' => $nodeId,
                     'label' => 'بعدی'
                 ];
@@ -62,8 +83,9 @@ class Show extends Component
 
         return view('livewire.admin.electronic.laptop.show', [
             'nodes' => $nodes,
-            'edges' => $edges
+            'edges' => $edges,
+            'histories' => $this->histories,
+            'tools' => $this->tools
         ]);
     }
-
 }

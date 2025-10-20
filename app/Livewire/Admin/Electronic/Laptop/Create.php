@@ -24,7 +24,7 @@ class Create extends Component
     public $name_project;
     public $from_date;
     public $to_date;
-    public $status ='بازگشت'; // پیش‌فرض
+    public $status ='return'; // پیش‌فرض
 
     public function save()
     {
@@ -68,7 +68,7 @@ class Create extends Component
             'accessories'  => json_encode($this->accessories),
         ]);
 
-        session()->flash('message', 'لپتاپ و اولین تحویل با موفقیت ذخیره شدند!');
+        session()->flash('message', '  اولین تحویل با موفقیت ذخیره شدند!');
         return redirect()->route('admin.laptop.index');
     }
 

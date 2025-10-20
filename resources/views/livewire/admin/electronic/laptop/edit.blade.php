@@ -19,6 +19,7 @@
                    <option value="لپتاپ">لپتاپ</option>
                    <option value="تبلت">تبلت</option>
                    <option value="موبایل">موبایل</option>
+                   <option value="تجهیزات جانبی">تجهیزات جانبی</option>
                </select>
                @error('name') <span class="text-danger">{{ $message }}</span> @enderror
                <br>
@@ -42,15 +43,23 @@
                    <label class="form-check-label" for="accessory1">شارژر</label>
                </div>
                <div class="form-check1">
-                   <input type="checkbox" id="accessory2" class="form-check-input" wire:model="accessories" value="کیف لپتاپ">
+                   <input type="checkbox" id="accessory2" class="form-check-input" wire:model="accessories" value="کیبورد">
+                   <label class="form-check-label" for="accessory1">کیبورد</label>
+               </div>
+               <div class="form-check1">
+                   <input type="checkbox" id="accessory3" class="form-check-input" wire:model="accessories" value="مانیتور">
+                   <label class="form-check-label" for="accessory1">مانیتور</label>
+               </div>
+               <div class="form-check1">
+                   <input type="checkbox" id="accessory4" class="form-check-input" wire:model="accessories" value="کیف لپتاپ">
                    <label class="form-check-label" for="accessory2">کیف لپتاپ</label>
                </div>
                <div class="form-check1">
-                   <input type="checkbox" id="accessory3" class="form-check-input" wire:model="accessories" value="موس">
+                   <input type="checkbox" id="accessory5" class="form-check-input" wire:model="accessories" value="موس">
                    <label class="form-check-label" for="accessory3">موس</label>
                </div>
                <div class="form-check1">
-                   <input type="checkbox" id="accessory4" class="form-check-input" wire:model="accessories" value="هارد اکسترنال">
+                   <input type="checkbox" id="accessory6" class="form-check-input" wire:model="accessories" value="هارد اکسترنال">
                    <label class="form-check-label" for="accessory4">هارد اکسترنال</label>
                </div>
                @error('accessories') <span class="text-danger">{{ $message }}</span> @enderror

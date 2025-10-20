@@ -7,7 +7,10 @@ use Illuminate\Support\Facades\Route;
 //});
 
 
-Route::get('/', App\Livewire\Authentication\Login::class)->name('login');
+
+Route::get('/login', App\Livewire\Authentication\Login::class)->name('login');
+Route::get('/', \App\Livewire\HomeSearch::class)->name('home');
+
 
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/dashboard',App\Livewire\Admin\Dashboard::class)->name('admin.dashboard');

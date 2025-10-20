@@ -1,80 +1,83 @@
-<div dir="rtl">
-    <div class="container-fluid g-0">
-        <div class="row g-0">
-            <div class="col-md-2">
-                @livewire('components.sidebar')
-            </div>
-            <div class="col-md-10 content">
-                @livewire('components.topmenu')
+<div dir="rtl" class="container-fluid g-0">
+    <div class="row g-0">
+        <div class="col-md-2">
+            @livewire('components.sidebar')
+        </div>
+
+        <div class="col-md-10 content">
+            @livewire('components.topmenu')
+            <br>
+
+            <div class="container">
+                <h5><i class="fa fa-arrow-alt-circle-left"></i> فرم ارسال / بازگشت تجهیزات الکترونیکی</h5>
                 <br>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-
-            <div>
                 <form class="form-control" wire:submit.prevent="save">
                     <div class="row">
                         <div class="col-md-6">
-                            <label>انتخاب تجیهزات:</label>
-                            <select class="form-control" wire:model="digitaltool_id" class="form-select">
+                            <label>انتخاب تجهیزات:</label>
+                            <select class="form-control" wire:model.live="digitaltool_id">
                                 <option value="">انتخاب کنید</option>
-                                @foreach($laptops as $laptop)
-                                    <option value="{{ $laptop->id }}">{{ $laptop->name }} / {{ $laptop->serial_jam }}</option>
+                                @foreach($laptops as $l)
+                                    <option value="{{ $l->id }}">{{ $l->name }} / {{ $l->serial_jam }}</option>
                                 @endforeach
                             </select>
+                            @error('digitaltool_id')
+                            <div class="text-danger small mt-1">{{ $message }}</div>
+                            @enderror
 
-                            <label>نام تحویل گیرنده:</label>
-                            <input class="form-control" type="text" wire:model="name_receiver">
+                            <label class="mt-2">نام تحویل گیرنده:</label>
+                            <input class="form-control" type="text" wire:model="name_receiver"
+                                   @if($selectedLaptopHasActiveSend) disabled @endif>
 
-                            <label>شماره پرسنلی:</label>
-                            <input class="form-control"  type="text" wire:model="card_number">
+                            <label class="mt-2">شماره پرسنلی:</label>
+                            <input class="form-control" type="text" wire:model="card_number"
+                                   @if($selectedLaptopHasActiveSend) disabled @endif>
 
-                            <label>شماره تماس:</label>
-                            <input class="form-control" type="text" wire:model="phone">
+                            <label class="mt-2">شماره تماس:</label>
+                            <input class="form-control" type="text" wire:model="phone"
+                                   @if($selectedLaptopHasActiveSend) disabled @endif>
 
-                            <label>پروژه:</label>
-                            <input class="form-control" type="text" wire:model="name_project">
+                            <label class="mt-2">پروژه:</label>
+                            <input class="form-control" type="text" wire:model="name_project"
+                                   @if($selectedLaptopHasActiveSend) disabled @endif>
                         </div>
+
                         <div class="col-md-6">
                             <label>تاریخ تحویل:</label>
-                            <input class="form-control" type="date" wire:model="from_date">
+                            <input class="form-control" type="date" wire:model="from_date"
+                                   @if($selectedLaptopHasActiveSend) disabled @endif>
 
-                            <label>تاریخ برگشت (اختیاری):</label>
+                            <label class="mt-2">تاریخ برگشت (اختیاری):</label>
                             <input class="form-control" type="date" wire:model="to_date">
-                            <label>وضعیت</label>
-                            <select class="form-control" name="status" wire:model="status" id="">
-                                <option value="" selected>انتخاب کتید</option>
-                                <option value="ارسال" selected>ارسال</option>
-                                <option value="در حال ارسال" selected>در حال ارسال</option>
-                                <option value="بازگشت" selected> بازگشت</option>
+
+                            <label class="mt-3">وضعیت:</label>
+                            <select class="form-control" wire:model="status">
+                                <option value="{{ \App\Models\Digital_history::STATUS_SEND }}"
+                                        @if($selectedLaptopHasActiveSend) disabled @endif>
+                                    ارسال
+                                </option>
+                                <option value="{{ \App\Models\Digital_history::STATUS_RETURN }}">بازگشت</option>
                             </select>
 
-                            <label>توضیحات :</label>
-                            <textarea class="form-control" wire:model="content" name="" id="" cols="30" rows="10"></textarea>
+                            {{-- هشدار درجا --}}
+                            @if($warningMessage)
+                                <div class="alert alert-warning mt-3" style="font-weight:bold; font-size:15px;">
+                                    <i class="fa fa-exclamation-triangle"></i>
+                                    {{ $warningMessage }}
+                                </div>
+                            @endif
+
+                            <label class="mt-3">توضیحات:</label>
+                            <textarea class="form-control" wire:model="content" rows="6"></textarea>
                         </div>
                     </div>
 
-
-
-
-
-                    <button class="btn btn-dark" type="submit">تحویل لپتاپ</button>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-dark" style="width: 40%;" type="submit">ثبت</button>
+                    </div>
                 </form>
-
-            </div>
-        </div>
-        <div class="col-md-2"></div>
-    </div>
-</div>
-
-
             </div>
         </div>
     </div>
 </div>
-
-
-
-

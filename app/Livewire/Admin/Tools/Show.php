@@ -39,7 +39,7 @@ class Show extends Component
             $nodes[] = [
                 'id' => $nodeId,
                 'label' => $history->name_receiver."\n".$history->status."\n".$history->from_date,
-                'color' => $history->status === 'ارسال' ? 'red' : ($history->status === 'در حال ارسال' ? 'yellow' : 'green'),
+                'color' => $history->status === 'send' ? 'red' : ($history->status === 'return' ? 'green' :''),
                 'shape' => 'box'
             ];
 

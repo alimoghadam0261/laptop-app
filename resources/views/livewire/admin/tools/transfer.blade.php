@@ -9,9 +9,10 @@
                 <br>
 
                 <div class="container">
+                    <h5><i class="fa fa-arrow-circle-left"></i> فرم ارسال اموال جمع داری</h5>
+                    <br>
                     <div class="row">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8">
+
 
                             {{-- پیام موفقیت ثبت --}}
                             @if (session()->has('success'))
@@ -107,9 +108,9 @@
                                         <select class="form-control @error('status') is-invalid @enderror"
                                                 wire:model="status">
                                             <option value="">انتخاب کنید</option>
-                                            <option value="ارسال">ارسال</option>
-                                            <option value="در حال ارسال">در حال ارسال</option>
-                                            <option value="بازگشت">بازگشت</option>
+                                            <option value="send">ارسال</option>
+
+                                            <option value="return">بازگشت</option>
                                         </select>
                                         @error('status')
                                         <div class="invalid-feedback d-block">{{ $message }}</div>
@@ -128,18 +129,15 @@
                                     </div>
                                 </div>
 
-                                <hr class="bg-light">
 
-                                <div class="text-center">
-                                    <button class="btn btn-dark px-5 py-2" type="submit">
+
+
+                                    <button class="btn btn-dark px-5 py-2" type="submit" style="width:50%">
                                        تحویل اموال
                                     </button>
-                                </div>
 
                             </form>
 
-                        </div>
-                        <div class="col-md-2"></div>
                     </div>
                 </div>
 
